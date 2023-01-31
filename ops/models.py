@@ -30,4 +30,53 @@ class Station(models.Model):
         verbose_name_plural = "Station"
 
     def __str__(self):
-        return "{}-{}".format(self.station_id, self.name_fi)
+        return "{}-{}".format(self.station_id, self.name_en)
+
+
+class DepartureInfo(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    departure_time = models.DateTimeField()
+    departure_station_id = models.ForeignKey(Station, on_delete=models.PROTECT)
+    departure_station_name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "DepartureInfo"
+
+    def __str__(self):
+        return "{}-{}-{}".format(self.id,
+                                 self.departure_station_id,
+                                 self.departure_station_name,)
+
+
+class ReturnInfo(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    return_time = models.DateTimeField()
+    return_station_id = models.ForeignKey(Station, on_delete=models.PROTECT)
+    return_station_name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "ReturnInfo"
+
+    def __str__(self):
+        return "{}-{}-{}".format(self.id,
+                                 self.return_station_id,
+                                 self.return_station_name,)
+
+
+class Journey(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    departure_info = models.ForeignKey(DepartureInfo, on_delete=models.PROTECT)
+    return_info = models.ForeignKey(ReturnInfo, on_delete=models.PROTECT)
+    distance = models.FloatField()
+    duration = models.IntegerField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Journey"
+
+    def __str__(self):
+        return "{}-{}-{}".format(self.id,
+                                 self.departure_station_id,
+                                 self.return_station_id,)
