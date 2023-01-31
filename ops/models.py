@@ -78,5 +78,5 @@ class Journey(models.Model):
 
     def __str__(self):
         return "{}-{}-{}".format(self.id,
-                                 self.departure_station_id,
-                                 self.return_station_id,)
+                                 self.departure_info,
+                                 self.return_info,)
