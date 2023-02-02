@@ -77,6 +77,5 @@ class Journey(models.Model):
         verbose_name_plural = "Journey"
 
     def __str__(self):
-        return "{}-{}-{}".format(self.id,
-                                 self.departure_info,
-                                 self.return_info,)
+        return "{}-{}".format(self.distance,
+                              self.duration,)
