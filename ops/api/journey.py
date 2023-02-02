@@ -29,7 +29,7 @@ class GetJourney(View):
                 "return_time": item.return_info.return_time.strftime('%s'),
                 "return_station": item.return_info.return_station_name,
                 "distance": item.distance / 1000.0,
-                "duration": timedelta(seconds=item.duration),
+                "duration": item.duration,
             })
 
         return JsonResponse({
