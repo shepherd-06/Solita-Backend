@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     # My Apps
     'ops.apps.OpsConfig',
-    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [

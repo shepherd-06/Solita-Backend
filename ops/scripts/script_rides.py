@@ -8,7 +8,7 @@ from ops.serializer import (ReturnSerializer,
 from ops.models import Station
 
 
-class Rides(View):
+class ScriptRides(View):
 
     """
     This API has to be called after the Station API. Otherwise it will fail.

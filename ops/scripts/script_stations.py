@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from ops.serializer import StationSerializer
 
 
-class Station (View):
+class ScriptStation (View):
 
     """
     This is a simple API
