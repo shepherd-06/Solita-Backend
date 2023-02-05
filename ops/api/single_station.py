@@ -1,6 +1,7 @@
 from django.views import View
 from django.http import JsonResponse
-from ops.models import Station, DepartureInfo, ReturnInfo
+from ops.models import Station, DepartureInfo, ReturnInfo, Journey
+from django.db.models import Sum
 
 
 class SingleStationView(View):
@@ -30,6 +31,16 @@ class SingleStationView(View):
         return_count = ReturnInfo.objects.filter(
             return_station_id=station_obj.id).count()
 
+        total_departure_distance = Journey.objects.filter(
+            departure_info__departure_station_id=station_obj.id)\
+            .aggregate(total=Sum('distance'))["total"]
+        average_departure_distance = total_departure_distance / departure_count
+
+        total_return_distance = Journey.objects.filter(
+            return_info__return_station_id=station_obj.id)\
+            .aggregate(total=Sum('distance'))["total"]
+        average_return_distance = total_return_distance / return_count
+
         station_data = station_obj.__dict__
         station_data.pop('_state')
         station_data.pop('id')
@@ -39,6 +50,8 @@ class SingleStationView(View):
         data = {
             "start_from": departure_count,
             "return_to": return_count,
+            "avg_departure_distance": average_departure_distance,
+            "avg_return_distance": average_return_distance,
             "station": station_data,
         }
 
