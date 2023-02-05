@@ -36,7 +36,7 @@ This `readme` file will not cover the installation phase of them. I have already
 
 ### Installing and Activating the VirtualEnv
 
-1. Install python virtualenv package: 
+1. Install python virtualenv package:
 
     For MacOS: `python3 -m pip install --user virtualenv`
 
@@ -71,7 +71,11 @@ After setting up the `.env` file, run `python manage.py runserver`. It should ru
 
 ### Running the Migration
 
-Now we are going to apply all the migrations by simply running `python manage.py migrate`. All migrations is going to be applied and the project is good to go!
+Now we are going to apply all the migrations by simply running:
+
+`python manage.py migrate`.
+
+All migrations is going to be applied and the project is good to go!
 
 ### Download the CSV file on your machine
 
@@ -90,6 +94,21 @@ We need to download the base csv file from a URL.
 
     It's important that all the csv files have the correct name and downloading inside the `static` folder in the root directory. Otherwise, django won't be able to upload the data to server.
 
+### Deploy
+
+* To test locally,
+
+    `python3 manage.py runserver`.
+
+    if you want to specify a port, you can do so
+
+    `python3 manage.py runserver <PORT>`
+* To test in detached mode/to deploy in server:
+
+    `nohup python3 manage.py runserver &`
+
+    All the outputs will be logged in `nohup.out` file. This part is <b> NOT </b> mandatory. I do it this way, do it however you like.
+
 ### Upload CSV data into database
 
 I have written two dummy views that will insert all the data into the database, it's a brute-force process, in my opinion. I didn't have enough time to covert this process into some simple scripts. This is a limitation of this version, for this phase.
@@ -101,10 +120,6 @@ You would need to configure our server (if you are testing on the server) to lis
 2. Now, you will have to insert all the journey data into the database. Its going to take a while. `http://localhost:8000/ops/<TODO>`, send a GET request via CURL or hit that URL from your browser. Don't run this request multiple times because then every data will be inserted that many times. We don't want it to happen
 
 It took me 20 minutes to populate the database, so get yourself some coffee and wait for it. Both of the requests will return a status. Again, this is a very bad way to populate data into the system. If I have time, I will update it.
-
-### Deploy
-
-Run `python3 manage.py runserver`. By default, Django will run the backend in `port 8000`. You can change to your port of choice by running `python3 manage.py runserver <PORT>`
 
 -----------
 

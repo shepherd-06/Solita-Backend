@@ -28,7 +28,9 @@ SECRET_KEY = config("SECRET_KEY", None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["172.104.158.15",
+                 "localhost",
+                 "127.0.0.1"]
 
 
 # Application definition
@@ -40,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'rest_framework',
 
     # My Apps
