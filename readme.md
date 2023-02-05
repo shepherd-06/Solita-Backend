@@ -77,7 +77,9 @@ After setting up the `.env` file, run `python manage.py runserver`. It should ru
 
 Now we are going to apply all the migrations by simply running:
 
-`python manage.py migrate`.
+```bash
+python manage.py migrate
+```
 
 All migrations is going to be applied and the project is good to go!
 
@@ -87,43 +89,67 @@ We need to download the base csv file from a URL.
 
 1. Now we are going to download all the `csv` files using some `wget` magic. General format of the command is `wget URL -O filename`.
 
-    1. Download the dataset from Helsinki Region Transport’s (HSL) of city bicycle stations: `wget https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv -O helsinki_station_list.csv`
+    1. Download the dataset from Helsinki Region Transport’s (HSL) of city bicycle stations:
+
+    ```bash
+    wget https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv -O helsinki_station_list.csv
+    ```
+
     2. Download three datasets of Journey data
 
-        `wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv -O 2021-05.csv`
+        ```bash
+        wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv -O 2021-05.csv
+        ```
 
-        `wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv -O 2021-06.csv`
+        ```bash
+        wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv -O 2021-06.csv
+        ```
 
-        `wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv -O 2021-07.csv`
+        ```bash
+        wget https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv -O 2021-07.csv
+        ```
 
     It's important that all the csv files have the correct name and downloading inside the `static` folder in the root directory. Otherwise, django won't be able to upload the data to server.
+
+### Upload CSV data into database
+
+Before running the server, you need to insert the data from the csv files. You will need to run both of these commands from the root directory of the project folder.
+
+1. Run this from the root project directory to insert all the station data.
+
+```bash
+python3 manage.py shell < ops/scripts/script_stations.py
+```
+
+2. Now run this command to insert all the journeys. This will take a while.
+
+```bash
+python3 manage.py shell < ops/scripts/script_rides.py
+```
+
+For both these script, you will be able to see the progress and error on the terminal screen.
 
 ### Deploy
 
 * To test locally,
 
-    `python3 manage.py runserver`.
+    ```bash
+    python3 manage.py runserver
+    ```
 
     if you want to specify a port, you can do so
 
-    `python3 manage.py runserver <PORT>`
+    ```bash
+    python3 manage.py runserver <PORT>
+    ```
+
 * To test in detached mode/to deploy in server:
 
-    `nohup python3 manage.py runserver &`
+    ```bash
+    nohup python3 manage.py runserver &
+    ```
 
     All the outputs will be logged in `nohup.out` file. This part is <b> NOT </b> mandatory. I do it this way, do it however you like.
-
-### Upload CSV data into database
-
-I have written two dummy views that will insert all the data into the database, it's a brute-force process, in my opinion. I didn't have enough time to covert this process into some simple scripts. This is a limitation of this version, for this phase.
-
-You would need to configure our server (if you are testing on the server) to listen to `port 8000`, default django port, unless you want to change it to something else.
-
-1. Send a CURL request to `http://localhost:8000/ops/<TODO>` to insert all the Station data from CSV to database. This will take couple of minutes.
-
-2. Now, you will have to insert all the journey data into the database. Its going to take a while. `http://localhost:8000/ops/<TODO>`, send a GET request via CURL or hit that URL from your browser. Don't run this request multiple times because then every data will be inserted that many times. We don't want it to happen. If you are testing from a cloud server, then browser will probably through a timeout error, if the default timeout has been set, but the request will continue on the server side. Again, poor implementation, I will probably change this process into a one-time script.
-
-It took me 20 minutes to populate the database, so get yourself some coffee and wait for it. Both of the requests will return a status. Again, this is a very bad way to populate data into the system. If I have time, I will update it.
 
 -----------
 
