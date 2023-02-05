@@ -203,7 +203,7 @@ This project used `Django` for backend and `postgreSQL` to store the data. I am 
 
 * [Completed] List Journeys
 * [Completed] For each journey show departure and return stations, covered distance in kilometers and duration in minutes
-* [Pagination] Pagination
+* [Completed] Pagination
 * [TODO] Ordering per column
 * [TODO] Searching
 * [TODO] Filtering
@@ -220,9 +220,9 @@ This project used `Django` for backend and `postgreSQL` to store the data. I am 
 * [Completed] Station address
 * [Completed] Total number of journeys starting from the station
 * [Completed] Total number of journeys ending at the station
-* [TODO] Station location on the map
-* [TODO] The average distance of a journey starting from the station
-* [TODO] The average distance of a journey ending at the station
+* [Completed] Station location on the map
+* [Completed] The average distance of a journey starting from the station
+* [Completed] The average distance of a journey ending at the station
 * [TODO] Top 5 most popular return stations for journeys starting from the station
 * [TODO] Top 5 most popular departure stations for journeys ending at the station
 * [TODO] Ability to filter all the calculations per month
