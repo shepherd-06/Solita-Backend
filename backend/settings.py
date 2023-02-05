@@ -30,7 +30,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["172.104.158.15",
                  "localhost",
-                 "127.0.0.1"]
+                 "127.0.0.1",
+                 "jolly-platypus-a9a828.netlify.app",]
 
 
 # Application definition
