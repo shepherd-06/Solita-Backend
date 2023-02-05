@@ -4,13 +4,13 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL). This project shows the list of stations HSL has and a front-end to view all the journey's to and from said stations. Detailed feature list is [here](https://github.com/shepherd-06/Solita-Backend#feature-list).
 
-Backend (Deployed): <http://172.104.158.15/ops/>
+Backend (Deployed): <https://test.ibtehaz.xyz/ops/>
 
 Full list of end points are given [here](https://github.com/shepherd-06/Solita-Backend#api-end-points)
 
 Frontend (Github Repo): <https://github.com/shepherd-06/Solita-FrontEnd>
 
-Frontend (Deployed): [TODO Add URL]
+Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
 
 ## Requirements
 
@@ -35,6 +35,8 @@ This `readme` file will not cover the installation phase of them. I have already
 * (Additional) Check if your favorite server (nginx) is already installed and up-and-running.
 
 ### Steps (All commands are for <u>Unix/macOS System Only</u>)
+
+First clone down this repository.
 
 ### Installing and Activating the VirtualEnv
 
@@ -129,7 +131,7 @@ It took me 20 minutes to populate the database, so get yourself some coffee and 
 
 1. Get Station List:
 
-`http://172.104.158.15/ops/get_station/?page=1`
+`https://test.ibtehaz.xyz/ops/get_station/?page=1`
 
 URL Parameter: `page`, default to 1
 
@@ -137,7 +139,7 @@ This end points sends the data in ascending order based on `station_id` (from th
 
 2. Get Single Station Data:
 
-`http://172.104.158.15/ops/station/?station_id=<station_id>`
+`https://test.ibtehaz.xyz/ops/station/?station_id=<station_id>`
 
 URL Parameter (Mandatory): `station_id`.
 
@@ -147,7 +149,7 @@ This API return the station data along with number of journey's started from thi
 
 3. List of Journey:
 
-`http://172.104.158.15/ops/get_journey/?page=1`
+`https://test.ibtehaz.xyz/ops/get_journey/?page=1`
 
 URL Parameter: `page`. Defaults to 1.
 
@@ -203,7 +205,7 @@ This project used `Django` for backend and `postgreSQL` to store the data. I am 
 
 * [TODO] Endpoints to store new journeys data or new bicycle stations
 * [TODO] Running backend in Docker
-* [TODO] Running backend in Cloud
+* [Completed] Running backend in Cloud
 * [TODO] Implement E2E tests
 * [TODO] Create UI for adding journeys or bicycle stations
 

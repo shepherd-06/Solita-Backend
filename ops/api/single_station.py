@@ -30,9 +30,16 @@ class SingleStationView(View):
         return_count = ReturnInfo.objects.filter(
             return_station_id=station_obj.id).count()
 
+        station_data = station_obj.__dict__
+        station_data.pop('_state')
+        station_data.pop('id')
+        station_data["created_at"] = station_data["created_at"].timestamp()
+        station_data["updated_at"] = station_data["updated_at"].timestamp()
+
         data = {
             "start_from": departure_count,
-            "return_to": return_count
+            "return_to": return_count,
+            "station": station_data,
         }
 
         return JsonResponse({
