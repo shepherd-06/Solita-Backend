@@ -1,8 +1,7 @@
 from django.urls import path
 
-# from ops.scripts.stations import Station
-# from ops.scripts.rides import Rides
-from ops.views import index
+from ops.scripts.script_rides import ScriptRides
+from ops.scripts.script_stations import ScriptStation
 
 from ops.api.station import GetStation
 from ops.api.single_station import SingleStationView
@@ -12,5 +11,7 @@ urlpatterns = [
     path('station/', SingleStationView.as_view()),
     path('get_station/', GetStation.as_view()),
     path('get_journey/', GetJourney.as_view()),
-    path('', index, name="index"),
+
+    path('/script/rides', ScriptRides.as_view()),
+    path('/script/station', ScriptStation.as_view()),
 ]
