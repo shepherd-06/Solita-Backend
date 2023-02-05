@@ -12,6 +12,6 @@ urlpatterns = [
     path('get_station/', GetStation.as_view()),
     path('get_journey/', GetJourney.as_view()),
 
-    path('/script/rides', ScriptRides.as_view()),
-    path('/script/station', ScriptStation.as_view()),
+    path('script/rides', ScriptRides.as_view()),
+    path('script/station', ScriptStation.as_view()),
 ]

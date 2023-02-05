@@ -75,10 +75,9 @@ Now we are going to apply all the migrations by simply running `python manage.py
 
 ### Download the CSV file on your machine
 
-Two more small things to complete. We need to download the base csv file from a URL.
+We need to download the base csv file from a URL.
 
-1. Create a directory `static` in the BASE directory, `mkdir static`.
-2. Now we are going to download all the `csv` files using some `wget` magic. General format of the command is `wget URL -O filename`.
+1. Now we are going to download all the `csv` files using some `wget` magic. General format of the command is `wget URL -O filename`.
 
     1. Download the dataset from Helsinki Region Transport’s (HSL) of city bicycle stations: `wget https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv -O helsinki_station_list.csv`
     2. Download three datasets of Journey data
