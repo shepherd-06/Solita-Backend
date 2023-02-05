@@ -14,7 +14,17 @@ Frontend (Deployed): [TODO Add URL]
 
 This project has been developed on MacOS and tested on Ubuntu 22.04 LTS, and `python3.10`. We will need `python3.*`, `postgreSQL` database pre-installed. [Here](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart) is a quick guide on how to install and create basic user on PostgreSQL. On MacOS, I have used `PostgreSQL 15` to test and on Ubuntu 22.04 LTS (server), it's `PostgreSQL`.
 
-### Steps (All commands are for Unix/macOS system only)
+### Pre-Checklist
+
+This `readme` file will not cover the installation phase of them. I have already taken it into account that they are pre-installed into the system and up-and-running.
+
+* Check the current version of `python3` by running, `python3 --version`. Anything above `python3.5` should be fine (I think). This project used `Python 3.10.6` for both development phase and deployment phase.
+
+* Check if PostgreSQL has already been installed and up-and-running.
+
+* (Additional) Check if your favorite server (nginx) is already installed and up-and-running.
+
+### Steps (All commands are for <u>Unix/macOS System Only</u>)
 
 ### Installing and Activating the VirtualEnv
 
