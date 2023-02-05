@@ -22,13 +22,25 @@ This `readme` file will not cover the installation phase of them. I have already
 
 * Check if PostgreSQL has already been installed and up-and-running.
 
+* Install Pip; if it's not present.
+
+    Ubuntu: `sudo apt install python3-pip`
+
+    MacOS: `curl https://bootstrap.pypa.io/get-pip.py | python3`
+
+    I didn't test the command for MacOS, pip's already installed in my system.
+
 * (Additional) Check if your favorite server (nginx) is already installed and up-and-running.
 
 ### Steps (All commands are for <u>Unix/macOS System Only</u>)
 
 ### Installing and Activating the VirtualEnv
 
-1. Install python virtualenv package: `python3 -m pip install --user virtualenv`
+1. Install python virtualenv package: 
+
+    For MacOS: `python3 -m pip install --user virtualenv`
+
+    For Ubuntu/Debian System: `apt install python3.10-venv`
 
 2. Create a `virtualenv`: `python3 -m venv path/to/env`
 
