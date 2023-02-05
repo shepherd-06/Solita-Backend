@@ -4,7 +4,9 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL). This project shows the list of stations HSL has and a front-end to view all the journey's to and from said stations. Detailed feature list is [here](https://github.com/shepherd-06/Solita-Backend#feature-list).
 
-Backend (Deployed): [TODO Add URL]
+Backend (Deployed): <http://172.104.158.15/ops/>
+
+Full list of end points are given [here](https://github.com/shepherd-06/Solita-Backend#api-end-points)
 
 Frontend (Github Repo): <https://github.com/shepherd-06/Solita-FrontEnd>
 
@@ -117,15 +119,43 @@ You would need to configure our server (if you are testing on the server) to lis
 
 1. Send a CURL request to `http://localhost:8000/ops/<TODO>` to insert all the Station data from CSV to database. This will take couple of minutes.
 
-2. Now, you will have to insert all the journey data into the database. Its going to take a while. `http://localhost:8000/ops/<TODO>`, send a GET request via CURL or hit that URL from your browser. Don't run this request multiple times because then every data will be inserted that many times. We don't want it to happen
+2. Now, you will have to insert all the journey data into the database. Its going to take a while. `http://localhost:8000/ops/<TODO>`, send a GET request via CURL or hit that URL from your browser. Don't run this request multiple times because then every data will be inserted that many times. We don't want it to happen. If you are testing from a cloud server, then browser will probably through a timeout error, if the default timeout has been set, but the request will continue on the server side. Again, poor implementation, I will probably change this process into a one-time script.
 
 It took me 20 minutes to populate the database, so get yourself some coffee and wait for it. Both of the requests will return a status. Again, this is a very bad way to populate data into the system. If I have time, I will update it.
 
 -----------
 
+## API End Points
+
+1. Get Station List:
+
+`http://172.104.158.15/ops/get_station/?page=1`
+
+URL Parameter: `page`, default to 1
+
+This end points sends the data in ascending order based on `station_id` (from the csv file). Items in pagination is fixed at this moment, 10 per request.
+
+2. Get Single Station Data:
+
+`http://172.104.158.15/ops/station/?station_id=<station_id>`
+
+URL Parameter (Mandatory): `station_id`.
+
+This is a <b> <u>mandatory</u></b> parameter.
+
+This API return the station data along with number of journey's started from this station and ended at this station.
+
+3. List of Journey:
+
+`http://172.104.158.15/ops/get_journey/?page=1`
+
+URL Parameter: `page`. Defaults to 1.
+
+20 entries will be sent in each request and this is fixed at this moment. All the data will be sent in ascending order based on departure time.
+
 ## Technology Choice
 
-This project used `Django` for front-end and `postgreSQL` to store the data. I am familiar with both of these tech, so I choose them. Besides, I love Django's ORM support.
+This project used `Django` for backend and `postgreSQL` to store the data. I am familiar with both of these tech, so I choose them.
 
 -----------
 
