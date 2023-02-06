@@ -30,7 +30,7 @@ class Station(models.Model):
         verbose_name_plural = "Station"
 
     def __str__(self):
-        return "{}-{}".format(self.station_id, self.name_en)
+        return "{}-{}".format(self.station_id, self.name_fi)
 
 
 class DepartureInfo(models.Model):

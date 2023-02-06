@@ -181,6 +181,23 @@ URL Parameter: `page`. Defaults to 1.
 
 20 entries will be sent in each request and this is fixed at this moment. All the data will be sent in ascending order based on departure time.
 
+4. Add A New Station:
+
+`https://test.ibtehaz.xyz/ops/add_station/`
+
+```text
+Request Type: POST
+Content-Type: JSON
+
+Mandatory Parameter: (station_id, name_fi)
+
+Optional Parameter:
+(name_sw, name_en, address_fi, address_en, city_fi, city_sw, operator, capacity, coordinate_x, coordinate_y)
+```
+
+After successful data insertion, you will get a status message. If any error occurs, you will get a message as well.
+
+
 ## Technology Choice
 
 This project used `Django` for backend and `postgreSQL` to store the data. I am familiar with both of these tech, so I choose them.
@@ -229,7 +246,7 @@ This project used `Django` for backend and `postgreSQL` to store the data. I am 
 
 ### Additional Features
 
-* [TODO] Endpoints to store new journeys data or new bicycle stations
+* [Completed] Endpoints to store new journeys data or new bicycle stations
 * [TODO] Running backend in Docker
 * [Completed] Running backend in Cloud
 * [TODO] Implement E2E tests
