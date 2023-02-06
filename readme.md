@@ -197,6 +197,30 @@ Optional Parameter:
 
 After successful data insertion, you will get a status message. If any error occurs, you will get a message as well.
 
+5. Add A New Journey:
+
+`https://test.ibtehaz.xyz/ops/add_journey/`
+
+```text
+Request Type: POST
+Content-Type: JSON
+
+Mandatory Parameter: (
+        "departure_time",
+        "departure_station_id",
+        "return_time",
+        "return_station_id",
+        "distance",
+        "duration"
+    )
+
+```
+
+    * Departure time cannot be after or equal to return time.
+    * distance cannot be less than 10 meters.
+    * duration of a trip cannot be less than 10 seconds.
+    * If departure_station_id or return_station_id is not valid, then the entry won't be registered.
+    * departure_time and return_time is in seconds from epoch.
 
 ## Technology Choice
 
