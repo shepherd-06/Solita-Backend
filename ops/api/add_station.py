@@ -1,7 +1,4 @@
 from django.http import JsonResponse
-from ops.models import Station
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
 from rest_framework.views import APIView
 from ops.serializer import StationSerializer
 
