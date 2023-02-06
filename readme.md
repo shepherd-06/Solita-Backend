@@ -121,7 +121,7 @@ Before running the server, you need to insert the data from the csv files. You w
 python3 manage.py shell < ops/scripts/script_stations.py
 ```
 
-2. Now run this command to insert all the journeys. This will take a while.
+2. Now run this command to insert all the journeys. This will take a while. (To finish inserting a million data, it will take about 8 hours, give or take)
 
 ```bash
 python3 manage.py shell < ops/scripts/script_rides.py

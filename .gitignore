@@ -162,3 +162,4 @@ cython_debug/
 .solita/
 *.csv
 nohup.out
+.DS_Store
