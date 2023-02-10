@@ -4,7 +4,7 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL). This project shows the list of stations HSL has and a front-end to view all the journey's to and from said stations. Detailed feature list is [here](https://github.com/shepherd-06/Solita-Backend#feature-list).
 
-Backend (Deployed): <https://test.ibtehaz.xyz/ops/>
+Backend (Deployed): ~~<https://test.ibtehaz.xyz/ops/>~~ [Cloud Server is in offline]
 
 Full list of end points are given [here](https://github.com/shepherd-06/Solita-Backend#api-end-points)
 
