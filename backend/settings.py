@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "jolly-platypus-a9a828.netlify.app",
-    "test.ibtehaz.xyz",
+    "projects.ibtehaz.xyz",
 ]
 
 
