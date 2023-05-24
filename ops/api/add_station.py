@@ -1,7 +1,8 @@
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from ops.serializer import StationSerializer
-from random import randint, uniform
+from random import randint
+from ops.models import Station
 
 
 # @method_decorator(csrf_exempt, name='dispatch')
@@ -36,9 +37,16 @@ class AddStation(APIView):
                 return JsonResponse({
                     "message": "Coordinates are required",
                 }, status=400)
-
-        data["station_id"] = randint(10000000, 500000000)
-
+        
+        while True:
+            station_id = randint(10000000, 500000000)
+            try:
+                Station.objects.get(station_id=station_id)
+            except Station.DoesNotExist:
+                # found a unique station id from the random number.
+                break
+            
+        data["station_id"] = station_id
         serializer = StationSerializer(data=data)
         if serializer.is_valid():
             station_obj = serializer.save()
