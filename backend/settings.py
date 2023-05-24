@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from decouple import config
 import os
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,3 +153,20 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
+
+
+# Logger
+loggar_folder = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(loggar_folder):
+    # Create the folder if it doesn't exist
+    os.makedirs(loggar_folder)
+
+log_file_path = os.path.join(loggar_folder, 'city_bike_app.log')
+logging.basicConfig(
+    level=logging.WARN,  # Set the desired logging level
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler(log_file_path),  # Log to a file
+        logging.StreamHandler(),  # Log to console (optional)
+    ]
+)
