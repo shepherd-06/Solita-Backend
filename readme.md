@@ -4,13 +4,13 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL). This project shows the list of stations HSL has and a front-end to view all the journey's to and from said stations. Detailed feature list is [here](https://github.com/shepherd-06/Solita-Backend#feature-list).
 
-Backend (Deployed): ~~<https://test.ibtehaz.xyz/ops/>~~ [Cloud Server is in offline]
+Backend (Deployed): https://projects.ibtehaz.xyz/solita/
 
 Full list of end points are given [here](https://github.com/shepherd-06/Solita-Backend#api-end-points)
 
 Frontend (Github Repo): <https://github.com/shepherd-06/Solita-FrontEnd>
 
-Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
+Frontend (Deployed): <https://shepherd-06.github.io/Solita-FrontEnd/>
 
 ## Requirements
 
@@ -157,7 +157,7 @@ For both these script, you will be able to see the progress and error on the ter
 
 1. Get Station List:
 
-`https://test.ibtehaz.xyz/ops/get_station/?page=1`
+`https://projects.ibtehaz.xyz/solita/get_station/?page=1`
 
 URL Parameter: `page`, default to 1
 
@@ -165,7 +165,7 @@ This end points sends the data in ascending order based on `station_id` (from th
 
 2. Get Single Station Data:
 
-`https://test.ibtehaz.xyz/ops/station/?station_id=<station_id>`
+`https://projects.ibtehaz.xyz/solita/station/?station_id=<station_id>`
 
 URL Parameter (Mandatory): `station_id`.
 
@@ -175,7 +175,7 @@ This API return the station data along with number of journey's started from thi
 
 3. List of Journey:
 
-`https://test.ibtehaz.xyz/ops/get_journey/?page=1`
+`https://projects.ibtehaz.xyz/solita/get_journey/?page=1`
 
 URL Parameter: `page`. Defaults to 1.
 
@@ -183,23 +183,56 @@ URL Parameter: `page`. Defaults to 1.
 
 4. Add A New Station:
 
-`https://test.ibtehaz.xyz/ops/add_station/`
+`https://projects.ibtehaz.xyz/solita/add_station/`
 
 ```text
 Request Type: POST
 Content-Type: JSON
 
-Mandatory Parameter: (station_id, name_fi)
+Required Paramter: (coordinate_x, coordinate_y)
+Optional Parameter: (name_fi or name_en or name_sw) but one of them is mandatory.
 
-Optional Parameter:
-(name_sw, name_en, address_fi, address_en, city_fi, city_sw, operator, capacity, coordinate_x, coordinate_y)
+[Truly] Optional Parameter:
+(address_fi, address_en, city_fi, city_sw, operator, capacity, coordinate_x, coordinate_y)
 ```
 
 After successful data insertion, you will get a status message. If any error occurs, you will get a message as well.
 
+Success message:
+
+```json
+{
+	"message": "409666737-None station created",
+	"data": {
+		"start_from": 0,
+		"return_to": 0,
+		"avg_departure_distance": 0,
+		"avg_return_distance": 0,
+		"popular_return": 0,
+		"popular_departure": 0,
+		"station": {
+			"station_id": 409666737,
+			"name_fi": null,
+			"name_sw": null,
+			"name_en": "test",
+			"address_fi": null,
+			"address_en": null,
+			"city_fi": null,
+			"city_sw": null,
+			"operator": null,
+			"capacity": null,
+			"coordinate_x": 1.24,
+			"coordinate_y": 2.56,
+			"created_at": 1684972239.865876,
+			"updated_at": 1684972239.86589
+		}
+	}
+}
+```
+
 5. Add A New Journey:
 
-`https://test.ibtehaz.xyz/ops/add_journey/`
+`https://projects.ibtehaz.xyz/solita/add_journey/`
 
 ```text
 Request Type: POST
@@ -213,14 +246,15 @@ Mandatory Parameter: (
         "distance",
         "duration"
     )
-
 ```
 
+```text
     * Departure time cannot be after or equal to return time.
     * distance cannot be less than 10 meters.
     * duration of a trip cannot be less than 10 seconds.
     * If departure_station_id or return_station_id is not valid, then the entry won't be registered.
     * departure_time and return_time is in seconds from epoch.
+```
 
 ## Technology Choice
 
@@ -253,7 +287,7 @@ This project used `Django` for backend and `postgreSQL` to store the data. I am 
 
 * [Completed] List all the stations
 * [Completed] Pagination
-* [TODO] Searching
+* [Completed] Searching
 
 ### Single station view
 
